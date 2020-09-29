@@ -15,10 +15,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun rollDice() {
+        imgDice1.setImageResource(getRandomDiceImage())
+        imgDice2.setImageResource(getRandomDiceImage())
+    }
+
+    private fun getRandomDiceImage() : Int {
 
         var randomInt = (1..6).random()
 
-        val drawableResource = when (randomInt) {
+        return when (randomInt) {
             1 -> R.drawable.dice_1
             2 -> R.drawable.dice_2
             3 -> R.drawable.dice_3
@@ -26,9 +31,6 @@ class MainActivity : AppCompatActivity() {
             5 -> R.drawable.dice_5
             else -> R.drawable.dice_6
         }
-
-        imgDice.setImageResource(drawableResource)
-
     }
 
 }
