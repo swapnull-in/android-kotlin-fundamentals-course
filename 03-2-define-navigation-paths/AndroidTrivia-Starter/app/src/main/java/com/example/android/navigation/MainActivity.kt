@@ -27,7 +27,6 @@ import com.example.android.navigation.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private var TAG: String = "MainActivity"
     private lateinit var drawerLayout: DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,8 +37,10 @@ class MainActivity : AppCompatActivity() {
         drawerLayout = binding.drawerLayout
 
         val navController = this.findNavController(R.id.myNavHostFragment)
-        NavigationUI.setupWithNavController(binding.navView, navController)
+
         NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
+
+        NavigationUI.setupWithNavController(binding.navView, navController)
     }
 
     // TODO (01) Create the new TitleFragment
@@ -54,9 +55,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = this.findNavController(R.id.myNavHostFragment)
-
-        Log.d(TAG, "Clicked Fragment ")
-
         return NavigationUI.navigateUp(navController, drawerLayout)
     }
 

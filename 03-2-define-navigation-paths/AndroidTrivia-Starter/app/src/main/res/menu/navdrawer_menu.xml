@@ -6,6 +6,7 @@
         android:id="@+id/rulesFragment"
         android:icon="@drawable/rules"
         android:title="@string/rules" />
+
     <item
         android:id="@+id/aboutFragment"
         android:icon="@drawable/about_android_trivia"
