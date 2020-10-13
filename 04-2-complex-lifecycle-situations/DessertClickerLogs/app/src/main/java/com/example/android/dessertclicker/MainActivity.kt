@@ -80,8 +80,7 @@ class MainActivity : AppCompatActivity() {
         binding.revenue = revenue
         binding.amountSold = dessertsSold
 
-        dessertTimer = DessertTimer()
-        dessertTimer.startTimer()
+        dessertTimer = DessertTimer(this.lifecycle)
 
         // Make sure the correct dessert is showing
         binding.dessertButton.setImageResource(currentDessert.imageId)
@@ -173,8 +172,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-
-        dessertTimer.stopTimer()
 
         Timber.i("onStop Called")
     }
