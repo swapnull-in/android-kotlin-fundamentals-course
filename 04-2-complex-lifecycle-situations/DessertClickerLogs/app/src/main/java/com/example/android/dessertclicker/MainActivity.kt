@@ -73,6 +73,13 @@ class MainActivity : AppCompatActivity() {
 
         Timber.i("onCreate called")
 
+        // Use Data Binding to get reference to the views
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        binding.dessertButton.setOnClickListener {
+            onDessertClicked()
+        }
+
         dessertTimer = DessertTimer(this.lifecycle)
 
         if (savedInstanceState != null) {
@@ -81,13 +88,6 @@ class MainActivity : AppCompatActivity() {
             dessertTimer.secondsCount =
                     savedInstanceState.getInt(KEY_TIMER_SECONDS, 0)
             showCurrentDessert()
-        }
-
-        // Use Data Binding to get reference to the views
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
-        binding.dessertButton.setOnClickListener {
-            onDessertClicked()
         }
 
         // Set the TextViews to the right values
@@ -100,6 +100,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
+
+        outState.putInt(KEY_REVENUE, revenue)
+        outState.putInt(KEY_DESSERT_SOLD, dessertsSold)
+        outState.putInt(KEY_TIMER_SECONDS, dessertTimer.secondsCount)
 
         Timber.i("onSaveInstanceState Called")
     }
